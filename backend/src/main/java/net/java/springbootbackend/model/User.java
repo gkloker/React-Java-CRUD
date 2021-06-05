@@ -17,7 +17,7 @@ public class User {
     private String lastName;
 
     @Column(name = "birthday")
-    private Date birthday;
+    private String birthday;
 
     @Column(name = "dni")
     private int dni;
@@ -26,7 +26,7 @@ public class User {
 
     }
 
-    public User(String firstName, String lastName, Date birthday, int dni) {
+    public User(String firstName, String lastName, String birthday, int dni) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
@@ -57,11 +57,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
