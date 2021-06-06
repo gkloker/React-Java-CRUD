@@ -1,11 +1,17 @@
 import axios from "axios";
 
-const USER_API_URL = "http://localhost:8080/api/v1/users";
+const URL_API = "http://localhost:8080/api/v1/users";
 
-class Axios {
-  getUsers() {
-    return axios.get(USER_API_URL);
+class AxiosService {
+  addUser(user) {
+    return axios.post(URL_API, user);
+  }
+
+  getUserId(id) {
+    const data = axios.get(URL_API + "/" + id);
+    console.log("data = ", data);
+    return data;
   }
 }
 
-export default new Axios();
+export default new AxiosService()
