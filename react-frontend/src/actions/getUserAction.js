@@ -6,7 +6,7 @@ import {
 import clientAxios from "../config/axios";
 
 // Get products
-export function getProductAction () {
+export function getUserAction () {
     return async (dispatch) => {
         dispatch(getUsers());
 

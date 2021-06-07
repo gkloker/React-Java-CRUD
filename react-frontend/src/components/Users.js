@@ -3,20 +3,20 @@ import User from "./User";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { getProductAction } from "../actions/getUserAction";
+import { getUserAction } from "../actions/getUserAction";
 
 const Users = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     // Consult database
-    const getUsers = () => dispatch(getProductAction());
+    const getUsers = () => dispatch(getUserAction());
     getUsers();
     // eslint-disable-next-line
   }, []);
 
   // Get state
-  const products = useSelector((state) => state.products.products);
+  const users = useSelector((state) => state.products.products);
   const error = useSelector((state) => state.products.error);
   const loading = useSelector((state) => state.products.loading);
 
@@ -37,9 +37,9 @@ const Users = () => {
           </tr>
         </thead>
         <tbody>
-          { products.length === 0 ? 'No products' : (
-            products.map(product => (
-              <User key={product.id} product={product}/>
+          { users.length === 0 ? 'No users' : (
+            users.map(user => (
+              <User key={user.id} user={user}/>
             ))
           )}
         </tbody>

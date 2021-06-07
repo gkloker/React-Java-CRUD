@@ -5,14 +5,14 @@ import Swal from "sweetalert2";
 // Redux
 import { useDispatch } from "react-redux";
 import { deleteUserAction } from "../actions/deleteUserAction";
-import { getEditProductAction } from "../actions/editUserAction";
+import { editUserAction } from "../actions/editUserAction";
 
-const User = ({product}) => {
+const User = ({user}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // Confirm delete product
-  const confirmDeleteProduct = (id) => {
+  // Confirm delete user
+  const confirmDeleteUser = (id) => {
     // Ask user
     Swal.fire({
       title: 'Are you sure?',
@@ -31,28 +31,28 @@ const User = ({product}) => {
   }
 
   // Method to redirect edit
-  const redirectEdition = (product) => {
-    dispatch(getEditProductAction(product));
+  const redirectEdition = (user) => {
+    dispatch(editUserAction(user));
 
-    history.push(`/users/edit/${product.id}`);
+    history.push(`/users/edit/${user.id}`);
   }
 
   return (
     <tr>
-      <td>{product.firstName}</td>
-      <td>{product.lastName}</td>
-      <td>{product.birthday}</td>
-      <td><span className="font-weight-bold">{product.dni}</span></td>
+      <td>{user.firstName}</td>
+      <td>{user.lastName}</td>
+      <td>{user.birthday}</td>
+      <td><span className="font-weight-bold">{user.dni}</span></td>
       <td className="acciones">
         <button
           type="button"
           className="btn btn-primary mr-2"
-          onClick={() => redirectEdition(product)}
+          onClick={() => redirectEdition(user)}
         >Edit</button>
         <button
           type="button"
           className="btn btn-danger"
-          onClick={() => confirmDeleteProduct(product.id)}
+          onClick={() => confirmDeleteUser(user.id)}
         >Delete</button>
       </td>
     </tr>
