@@ -18,7 +18,7 @@ const initialState = {
   users: [],
   error: null,
   loading: false,
-  productDelete: null,
+  userDelete: null,
   userEdit: null
 }
 
@@ -54,13 +54,13 @@ export default function (state = initialState, action) {
     case DELETE_USER:
       return {
         ...state,
-        productDelete: action.payload
+        userDelete: action.payload
       }
     case DELETE_USER_SUCCESS:
       return {
         ...state,
-        users: state.users.filter( product => product.id !== state.productDelete),
-        productDelete: null
+        users: state.users.filter( product => product.id !== state.userDelete),
+        userDelete: null
       }
     case GET_EDIT_USER:
       return {
