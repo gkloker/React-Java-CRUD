@@ -70,8 +70,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ## Libreries
 ### `npm i react-router-dom` react router dom
-### `npm install -g json-server` fake server with JSON server
-https://github.com/typicode/json-server
 ### `npm i react-redux redux redux-thunk` redux
 ### `npm i axios` client request APIs
 ### `npm i sweetalert2` popup alerts 
