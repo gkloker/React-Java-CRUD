@@ -4,7 +4,6 @@ import UsersList from "./components/UsersList";
 import Header from "./static/Header";
 import Footer from "./static/Footer";
 import CreateUser from "./components/CreateUser";
-import UpdateUser from "./components/UpdateUser";
 
 function App() {
   return (
@@ -13,14 +12,9 @@ function App() {
         <Header />
         <div className="container">
           <Switch>
-            <Route path="/" component={UsersList}/>
+            <Route exact path="/" component={UsersList}/>
             <Route path="/users" component={UsersList}/>
-            <Route path="/add-user">
-              <CreateUser />
-            </Route>
-            <Route path="/update-user/:id">
-              <UpdateUser />
-            </Route>
+            <Route path="/add-user/:id" component={CreateUser}/>
           </Switch>
         </div>
         <Footer />

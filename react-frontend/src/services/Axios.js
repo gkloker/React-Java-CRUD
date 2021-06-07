@@ -8,9 +8,15 @@ class AxiosService {
   }
 
   getUserId(id) {
-    const data = axios.get(URL_API + "/" + id);
-    console.log("data = ", data);
-    return data;
+    return axios.get(URL_API + "/" + id);
+  }
+
+  updateUser(user, id) {
+    return axios.put(URL_API + "/" + id, user);
+  }
+
+  deleteUser(id) {
+    return axios.delete(URL_API + "/" + id);
   }
 }
 

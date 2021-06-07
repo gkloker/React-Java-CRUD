@@ -72,3 +72,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### `npm i bootstrap --save` Boostrap
 ### `npm i axios --save` Axios
 ### `npm i react-router-dom --save` react-router-dom
+### `npm i react-router --save` react-router-dom

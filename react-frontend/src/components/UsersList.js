@@ -24,8 +24,9 @@ const UsersList = () => {
   }, []);
 
   function addUser() {
-    history.push('/add-user');
+    history.push('/add-user/-1');
   }
+
   return (
     <div>
       <h1 className="text-center">Invitations List</h1>

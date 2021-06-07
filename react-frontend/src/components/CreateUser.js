@@ -1,10 +1,14 @@
 import React, {useState} from "react";
 import Axios from "../services/Axios";
-
+import {useHistory} from "react-router-dom";
+import {useParams} from "react-router";
 
 const CreateUser = () => {
+  const history = useHistory();
+  const { id } = useParams();
 
   const [user, setUser] = useState({
+    id: id,
     firstName: "",
     lastName: "",
     birthday: "",
@@ -13,7 +17,19 @@ const CreateUser = () => {
 
   const [error, setError] = useState(false);
 
-  const {firstName, lastName, birthday, dni} = user;
+  if(id === -1) {
+    return;
+  } else {
+    Axios.getUserId(user.id).then((res) => {
+      let user = res.data
+      setUser({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        birthday: user.birthday,
+        dni: user.dni
+      })
+    })
+  }
 
   function changeHandler(e) {
     setUser({
@@ -22,24 +38,39 @@ const CreateUser = () => {
     })
   }
 
-  function saveUser(e) {
-    e.preventDefault();
-    if (firstName.trim() === "" || lastName.trim() === "" || birthday.trim() === "" || dni === 0) {
+  function saveUser() {
+    if (user.firstName.trim() === "" || user.lastName.trim() === "" || user.birthday.trim() === "" || user.dni === 0) {
       setError(true);
       return;
     }
     setError(false);
 
-    Axios.addUser(user).then(res => {
-      console.log(res);
+    if(id === -1) {
+      Axios.addUser(user).then(res => {
+        window.location.href="/users"
+      });
+    } else {
+      Axios.updateUser(user, id).then(res => {
+        window.location.href="/users"
+      });
+    }
+  }
+
+  function deleteUser() {
+    Axios.deleteUser(id).then(res => {
+      window.location.href="/users"
     });
+    // history.push('/users');
+  }
+
+  function cancel() {
+    history.push('/users');
   }
 
   return (
     <div className="container">
       <div className="row">
         <div className="card col-md-6 offset-md-3 offset-md-3">
-          <h3 className="text-center">Add User</h3>
           <div className="card-body">
             <form>
               <div className="form-group">
@@ -48,7 +79,7 @@ const CreateUser = () => {
                   type="text"
                   className="form-control"
                   name="firstName"
-                  value={firstName}
+                  value={user.firstName}
                   onChange={changeHandler}
                 />
               </div>
@@ -58,7 +89,7 @@ const CreateUser = () => {
                   type="text"
                   className="form-control"
                   name="lastName"
-                  value={lastName}
+                  value={user.lastName}
                   onChange={changeHandler}
                 />
               </div>
@@ -68,7 +99,7 @@ const CreateUser = () => {
                   type="text"
                   className="form-control"
                   name="birthday"
-                  value={birthday}
+                  value={user.birthday}
                   onChange={changeHandler}
                 />
               </div>
@@ -78,7 +109,7 @@ const CreateUser = () => {
                   type="number"
                   className="form-control"
                   name="dni"
-                  value={dni}
+                  value={user.dni}
                   onChange={changeHandler}
                 />
               </div>
@@ -87,6 +118,14 @@ const CreateUser = () => {
                 className="btn btn-success"
                 onClick={saveUser}
               >Save</button>
+              <button
+                className="btn btn-danger ml-2"
+                onClick={deleteUser}
+              >Delete</button>
+              <button
+                className="btn btn-secondary ml-2"
+                onClick={cancel}
+              >Cancel</button>
             </form>
             {error && <p className="text-danger">All fields are Required</p>}
           </div>

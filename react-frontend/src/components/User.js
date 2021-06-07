@@ -5,7 +5,7 @@ const User = ({user}) => {
   const history = useHistory();
 
   function editUser(id) {
-    history.push(`/update-user/${id}`);
+    history.push(`/add-user/${id}`);
   }
 
   return (
