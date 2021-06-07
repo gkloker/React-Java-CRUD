@@ -16,9 +16,9 @@ const Users = () => {
   }, []);
 
   // Get state
-  const users = useSelector((state) => state.products.products);
-  const error = useSelector((state) => state.products.error);
-  const loading = useSelector((state) => state.products.loading);
+  const users = useSelector((state) => state.users.users);
+  const error = useSelector((state) => state.users.error);
+  const loading = useSelector((state) => state.users.loading);
 
   return (
     <Fragment>

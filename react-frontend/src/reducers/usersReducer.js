@@ -15,7 +15,7 @@ import {
 
 // Any redurcer has its own state
 const initialState = {
-  products: [],
+  users: [],
   error: null,
   loading: false,
   productDelete: null,
@@ -34,7 +34,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: false,
-        products: [...state.products, action.payload]
+        users: [...state.users, action.payload]
       }
     case ADD_USER_ERROR:
     case GET_USERS_ERROR:
@@ -49,7 +49,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: false,
-        products: action.payload
+        users: action.payload
       }
     case DELETE_USER:
       return {
@@ -59,7 +59,7 @@ export default function (state = initialState, action) {
     case DELETE_USER_SUCCESS:
       return {
         ...state,
-        products: state.products.filter( product => product.id !== state.productDelete),
+        users: state.users.filter( product => product.id !== state.productDelete),
         productDelete: null
       }
     case GET_EDIT_USER:
@@ -71,7 +71,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         userEdit: null,
-        products: state.products.map( product =>
+        users: state.users.map( product =>
           product.id === action.payload.id ?
             product = action.payload :
             product

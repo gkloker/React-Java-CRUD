@@ -17,8 +17,8 @@ const NewUser = ({history}) => {
   const dispatch = useDispatch();
 
   // Access to state from store
-  const reload = useSelector((state) => state.products.loading);
-  const error = useSelector((state) => state.products.error);
+  const reload = useSelector((state) => state.users.loading);
+  const error = useSelector((state) => state.users.error);
   const alert = useSelector(state => state.alert.alert);
 
   // call the action from prooductAction

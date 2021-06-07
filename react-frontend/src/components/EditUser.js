@@ -15,7 +15,7 @@ const EditUser = () => {
   });
 
   // Edit product
-  const userEdit = useSelector(state => state.products.userEdit);
+  const userEdit = useSelector(state => state.users.userEdit);
 
   // Load state automatic
   useEffect(() => {

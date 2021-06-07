@@ -4,6 +4,6 @@ import alertReducer from "./alertReducer";
 
 // Method for combine reducers
 export default combineReducers({
-  products: usersReducer,
+  users: usersReducer,
   alert: alertReducer
 })
