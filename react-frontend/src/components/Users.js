@@ -3,7 +3,7 @@ import User from "./User";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { getProductAction } from "../actions/getProductAction";
+import { getProductAction } from "../actions/getUserAction";
 
 const Users = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const Users = () => {
 
   return (
     <Fragment>
-      <h2 className="text-center my-5">Products List</h2>
+      <h2 className="text-center my-5">Invitations List</h2>
 
       { error && <p className="font-weight-bold alert alert-danger text-center">There are an error</p> }
       { loading && <p className="text-center">Loading...</p> }

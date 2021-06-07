@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { editProductAction } from "../actions/editProductAction";
+import { editUserAction } from "../actions/editUserAction";
 import { useHistory } from "react-router-dom";
 
 const EditUser = () => {
@@ -33,7 +33,7 @@ const EditUser = () => {
   const submitEditProduct = (e) => {
     e.preventDefault();
 
-    dispatch(editProductAction(product));
+    dispatch(editUserAction(product));
 
     history.push("/");
   }

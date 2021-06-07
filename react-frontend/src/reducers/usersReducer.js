@@ -8,9 +8,9 @@ import {
   DELETE_USER,
   DELETE_USER_SUCCESS,
   DELETE_USER_ERROR,
-  GET_EDIT_PRODUCTS,
-  EDIT_PRODUCTS_SUCCESS,
-  EDIT_PRODUCTS_ERROR
+  GET_EDIT_USER,
+  EDIT_USER_SUCCESS,
+  EDIT_USER_ERROR
 } from '../types';
 
 // Any redurcer has its own state
@@ -39,7 +39,7 @@ export default function (state = initialState, action) {
     case ADD_USER_ERROR:
     case GET_USERS_ERROR:
     case DELETE_USER_ERROR:
-    case EDIT_PRODUCTS_ERROR:
+    case EDIT_USER_ERROR:
       return {
         ...state,
         loading: false,
@@ -62,12 +62,12 @@ export default function (state = initialState, action) {
         products: state.products.filter( product => product.id !== state.productDelete),
         productDelete: null
       }
-    case GET_EDIT_PRODUCTS:
+    case GET_EDIT_USER:
       return {
         ...state,
         productEdit: action.payload
       }
-    case EDIT_PRODUCTS_SUCCESS:
+    case EDIT_USER_SUCCESS:
       return {
         ...state,
         productEdit: null,

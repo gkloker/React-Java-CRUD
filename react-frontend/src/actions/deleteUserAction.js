@@ -7,7 +7,7 @@ import clientAxios from "../config/axios";
 import Swal from "sweetalert2";
 
 // Delete products
-export function deleteProductAction (id) {
+export function deleteUserAction (id) {
   return async (dispatch) => {
     dispatch(deleteProduct(id));
     try {

@@ -4,8 +4,8 @@ import Swal from "sweetalert2";
 
 // Redux
 import { useDispatch } from "react-redux";
-import { deleteProductAction } from "../actions/deleteProductAction";
-import { getEditProductAction } from "../actions/editProductAction";
+import { deleteUserAction } from "../actions/deleteUserAction";
+import { getEditProductAction } from "../actions/editUserAction";
 
 const User = ({product}) => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const User = ({product}) => {
     }).then((result) => {
       if (result.isConfirmed) {
         // Action
-        dispatch(deleteProductAction(id));
+        dispatch(deleteUserAction(id));
       }
     })
   }

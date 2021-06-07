@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 //actions from redux
-import { createNewProductAction } from '../actions/newProductActions';
+import { createNewProductAction } from '../actions/newUserActions';
 import { showAlertAction, hideAlertAction } from '../actions/alertActions';
 
 const NewUser = ({history}) => {
 
   // state from component
-  const [name, setName] = useState('');
-  const [price, setPrice] = useState(0);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [birthday, setBirthday] = useState('');
+  const [dni, setDni] = useState(0);
 
   // use useDispatch and create a function
   const dispatch = useDispatch();
@@ -27,7 +29,7 @@ const NewUser = ({history}) => {
     e.preventDefault();
 
     // Validate form
-    if (name.trim === '' || price <= 0) {
+    if (firstName.trim === '' || lastName.trim === '' || birthday.trim === '' || dni <= 0) {
 
       const alert = {
         msg: 'Both fields are required',
@@ -44,8 +46,10 @@ const NewUser = ({history}) => {
 
     // create a new product
     addProduct({
-      name,
-      price
+      firstName,
+      lastName,
+      birthday,
+      dni
     });
 
     // Redirect
@@ -58,7 +62,7 @@ const NewUser = ({history}) => {
         <div className="card">
           <div className="card-body">
             <h2 className="text-center mb-4 font-weight-bold">
-              Add New User
+              Add User
             </h2>
 
             { alert && <p className={alert.classes}>{alert.msg}</p> }
@@ -67,26 +71,47 @@ const NewUser = ({history}) => {
               onSubmit={submitNewProduct}
             >
               <div className="form-group">
-                <label>Name User</label>
+                <label>First Name</label>
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Name User"
-                  name="name"
-                  value={name}
-                  onChange={e => setName(e.target.value)}
+                  placeholder="First Name"
+                  name="firstName"
+                  value={firstName}
+                  onChange={e => setFirstName(e.target.value)}
                 />
               </div>
-
               <div className="form-group">
-                <label>Price User</label>
+                <label>Last Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Last Name"
+                  name="lastName"
+                  value={lastName}
+                  onChange={e => setLastName(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label>Birthday</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Birthday"
+                  name="birthday"
+                  value={birthday}
+                  onChange={e => setBirthday(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label>DNI</label>
                 <input
                   type="number"
                   className="form-control"
-                  placeholder="Price User"
-                  name="price"
-                  value={price}
-                  onChange={e => setPrice(Number(e.target.value))}
+                  placeholder="DNI"
+                  name="dni"
+                  value={dni}
+                  onChange={e => setDni(Number(e.target.value))}
                 />
               </div>
 
