@@ -9,11 +9,11 @@ import Swal from "sweetalert2";
 // Delete products
 export function deleteUserAction (id) {
   return async (dispatch) => {
-    dispatch(deleteProduct(id));
+    dispatch(deleteUser(id));
     try {
       await clientAxios.delete(`/users/${id}`);
 
-      dispatch(deleteProductSuccess());
+      dispatch(deleteUserSuccess());
 
       // Alert
       Swal.fire({
@@ -25,23 +25,23 @@ export function deleteUserAction (id) {
     } catch (error) {
       console.log(error);
 
-      dispatch(deleteProductError(error));
+      dispatch(deleteUserError(error));
     }
   }
 }
 
-const deleteProduct = (id) => ({
+const deleteUser = (id) => ({
   type: DELETE_USER,
   payload: id
 })
 
 // Delete product from database
-const deleteProductSuccess = () => ({
+const deleteUserSuccess = () => ({
   type: DELETE_USER_SUCCESS
 })
 
 // If there are an error
-const deleteProductError = () => ({
+const deleteUserError = () => ({
   type: DELETE_USER_ERROR,
   payload: true
 })
