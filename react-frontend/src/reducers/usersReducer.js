@@ -59,7 +59,7 @@ export default function (state = initialState, action) {
     case DELETE_USER_SUCCESS:
       return {
         ...state,
-        users: state.users.filter( product => product.id !== state.userDelete),
+        users: state.users.filter( user => user.id !== state.userDelete),
         userDelete: null
       }
     case GET_EDIT_USER:
@@ -71,10 +71,10 @@ export default function (state = initialState, action) {
       return {
         ...state,
         userEdit: null,
-        users: state.users.map( product =>
-          product.id === action.payload.id ?
-            product = action.payload :
-            product
+        users: state.users.map( user =>
+          user.id === action.payload.id ?
+            user = action.payload :
+            user
          )
       }
     default:
