@@ -29,9 +29,9 @@ const getUsers = () => ({
 })
 
 // If products gets from database
-const getUsersSuccess = (products) => ({
+const getUsersSuccess = (users) => ({
     type: GET_USERS_SUCCESS,
-    payload: products
+    payload: users
 })
 
 // If there are an error
