@@ -1,25 +1,30 @@
-import './App.css';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
-import UsersList from "./components/UsersList";
-import Header from "./static/Header";
-import Footer from "./static/Footer";
-import CreateUser from "./components/CreateUser";
+import React from 'react';
+import Header from './components/Header';
+import Users from './components/Users';
+import NewUser from './components/NewUser';
+import EditUser from './components/EditUser';
+
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
+// Redux
+import { Provider } from 'react-redux';
+import store from './store';
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
+    <Router>
+      <Provider store={store}>
         <Header />
+
         <div className="container">
           <Switch>
-            <Route exact path="/" component={UsersList}/>
-            <Route path="/users" component={UsersList}/>
-            <Route path="/add-user/:id" component={CreateUser}/>
+            <Route exact path="/" component={Users}/>
+            <Route exact path="/users/new" component={NewUser}/>
+            <Route exact path="/users/edit/:id" component={EditUser}/>
           </Switch>
         </div>
-        <Footer />
-      </BrowserRouter>
-    </>
+      </Provider>
+    </Router>
   );
 }
 

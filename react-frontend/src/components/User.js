@@ -1,28 +1,61 @@
-import React from "react";
+import React from 'react';
 import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const User = ({user}) => {
+// Redux
+import { useDispatch } from "react-redux";
+import { deleteProductAction } from "../actions/deleteProductAction";
+import { getEditProductAction } from "../actions/editProductAction";
+
+const User = ({product}) => {
+  const dispatch = useDispatch();
   const history = useHistory();
 
-  function editUser(id) {
-    history.push(`/add-user/${id}`);
+  // Confirm delete product
+  const confirmDeleteProduct = (id) => {
+    // Ask user
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Action
+        dispatch(deleteProductAction(id));
+      }
+    })
+  }
+
+  // Method to redirect edit
+  const redirectEdition = (product) => {
+    dispatch(getEditProductAction(product));
+
+    history.push(`/users/edit/${product.id}`);
   }
 
   return (
-    <>
-      <tr>
-        <td>{user.firstName}</td>
-        <td>{user.lastName}</td>
-        <td>{user.birthday}</td>
-        <td>{user.dni}</td>
-        <td>
-          <button
-            className="btn btn-info"
-            onClick={() => editUser(user.id)}
-          >Update</button>
-        </td>
-      </tr>
-    </>
+    <tr>
+      <td>{product.firstName}</td>
+      <td>{product.lastName}</td>
+      <td>{product.birthday}</td>
+      <td><span className="font-weight-bold">{product.dni}</span></td>
+      <td className="acciones">
+        <button
+          type="button"
+          className="btn btn-primary mr-2"
+          onClick={() => redirectEdition(product)}
+        >Edit</button>
+        <button
+          type="button"
+          className="btn btn-danger"
+          onClick={() => confirmDeleteProduct(product.id)}
+        >Delete</button>
+      </td>
+    </tr>
   );
 }
 
