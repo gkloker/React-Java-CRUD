@@ -22,7 +22,7 @@ const NewUser = ({history}) => {
   const alert = useSelector(state => state.alert.alert);
 
   // call the action from prooductAction
-  const addProduct = (product) => dispatch(createNewProductAction(product));
+  const addProduct = (user) => dispatch(createNewProductAction(user));
 
   // When user do submit
   const submitNewProduct = (e) => {

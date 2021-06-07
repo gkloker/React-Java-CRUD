@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 // Redux
 import { useDispatch } from "react-redux";
 import { deleteUserAction } from "../actions/deleteUserAction";
-import { editUserAction } from "../actions/editUserAction";
+import { getEditUserAction } from "../actions/editUserAction";
 
 const User = ({user}) => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const User = ({user}) => {
 
   // Method to redirect edit
   const redirectEdition = (user) => {
-    dispatch(editUserAction(user));
+    dispatch(getEditUserAction(user));
 
     history.push(`/users/edit/${user.id}`);
   }

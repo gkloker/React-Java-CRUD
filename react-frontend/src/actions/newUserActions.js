@@ -7,16 +7,16 @@ import clientAxios from "../config/axios";
 import Swal from "sweetalert2";
 
 // Create new products
-export function createNewProductAction (product) {
+export function createNewProductAction (user) {
   return async (dispatch) => {
     dispatch(addProduct());
 
     try {
       // Insert on API
-      await clientAxios.post('/users', product);
+      await clientAxios.post('/users', user);
 
       // If it is ok, update the state
-      dispatch(addProductSuccess(product));
+      dispatch(addProductSuccess(user));
 
       // Alert
       Swal.fire({
@@ -45,9 +45,9 @@ const addProduct = () => ({
 })
 
 // If the product save in the data base
-const addProductSuccess = (product) => ({
+const addProductSuccess = (user) => ({
   type: ADD_USER_SUCCESS,
-  payload: product
+  payload: user
 })
 
 // If there are an error

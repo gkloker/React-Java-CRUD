@@ -19,7 +19,7 @@ const initialState = {
   error: null,
   loading: false,
   productDelete: null,
-  productEdit: null
+  userEdit: null
 }
 
 export default function (state = initialState, action) {
@@ -65,12 +65,12 @@ export default function (state = initialState, action) {
     case GET_EDIT_USER:
       return {
         ...state,
-        productEdit: action.payload
+        userEdit: action.payload
       }
     case EDIT_USER_SUCCESS:
       return {
         ...state,
-        productEdit: null,
+        userEdit: null,
         products: state.products.map( product =>
           product.id === action.payload.id ?
             product = action.payload :

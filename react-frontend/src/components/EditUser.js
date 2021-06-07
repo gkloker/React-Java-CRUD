@@ -7,7 +7,7 @@ const EditUser = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [product, setProduct] = useState({
+  const [user, setUser] = useState({
     firstName: '',
     lastName: '',
     birthday: '',
@@ -15,17 +15,17 @@ const EditUser = () => {
   });
 
   // Edit product
-  const productEdit = useSelector(state => state.products.productEdit);
+  const userEdit = useSelector(state => state.products.userEdit);
 
   // Load state automatic
   useEffect(() => {
-    setProduct(productEdit)
-  }, [productEdit])
+    setUser(userEdit)
+  }, [userEdit])
 
   // Read data from form
   const onChangeForm = (e) => {
-    setProduct({
-      ...product,
+    setUser({
+      ...user,
       [e.target.name]: e.target.value
     })
   }
@@ -33,7 +33,7 @@ const EditUser = () => {
   const submitEditProduct = (e) => {
     e.preventDefault();
 
-    dispatch(editUserAction(product));
+    dispatch(editUserAction(user));
 
     history.push("/");
   }
@@ -57,7 +57,7 @@ const EditUser = () => {
                   className="form-control"
                   placeholder="FirstName"
                   name="firstName"
-                  value={product.firstName}
+                  value={user.firstName}
                   onChange={onChangeForm}
                 />
               </div>
@@ -68,7 +68,7 @@ const EditUser = () => {
                   className="form-control"
                   placeholder="LastName"
                   name="lastName"
-                  value={product.lastName}
+                  value={user.lastName}
                   onChange={onChangeForm}
                 />
               </div>
@@ -79,7 +79,7 @@ const EditUser = () => {
                   className="form-control"
                   placeholder="Birthday"
                   name="birthday"
-                  value={product.birthday}
+                  value={user.birthday}
                   onChange={onChangeForm}
                 />
               </div>
@@ -91,7 +91,7 @@ const EditUser = () => {
                   className="form-control"
                   placeholder="DNI"
                   name="dni"
-                  value={product.dni}
+                  value={user.dni}
                   onChange={onChangeForm}
                 />
               </div>
